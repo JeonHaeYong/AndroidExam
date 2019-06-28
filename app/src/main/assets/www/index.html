@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+    <script>
+        window.onload = function(){
+            var numBtns = document.getElementsByClassName("numBtn");
+            var regexN = /[0-9]{1,}/;
+            var regexO = /[+\-×÷]{1,}/;
+            for(var i=0; i<numBtns.length; i++){
+                numBtns[i].onclick = function(){
+                    window.Android.toastLong( "JavscriptInterface Test" );
+                    var inputNum = document.getElementById("inputNum").innerHTML;
+                    if(inputNum==0){
+                        if(this.value != 0){
+                            document.getElementById("inputNum").innerHTML = this.value;
+                        }
+                    }else{
+                        document.getElementById("inputNum").innerHTML = inputNum + this.value;
+                    }
+                }
+            }
+
+            document.getElementById("resultBtn").onclick = function(){
+                var inputNum = document.getElementById("inputNum").innerHTML;
+                var nums = inputNum.split(regexN);
+                var ops = inputNum.split(regexO);
+            }
+
+            document.getElementById("resetBtn").onclick = function(){
+                document.getElementById("inputNum").innerHTML = "";
+            }
+
+            var opBtns = document.getElementByClassName("opBtn");
+
+
+        };
+	</script>
+    <style>
+        #wrapper{
+            position: fixed;
+            width: 100%;
+            height: 100%;
+        }
+        #inputBox{
+            width: 80%;
+            height: 30%;
+            border: 1px solid black;
+            margin: auto;
+            text-align: right;
+        }
+        #inputNum{
+            line-height: 35px;
+            font-size: 20px;
+        }
+        #btnBox{
+            position: absolute;
+            width: 100%;
+            height: 70%;
+            bottom: 0px;
+            border: 1px solid black;
+            text-align: center;
+            margin: auto;
+        }
+        #btnBox input{
+            width: 20%;
+            height: 20%;
+        }
+    </style>
+</head>
+<body>
+<div id="wrapper">
+    <div id="inputBox"><p id="inputNum">0</p></div>
+    <div id="resultBox"><p id="result"></p></div>
+    <div id="btnBox">
+        <input type="button" id="resetBtn" value="C"><br>
+        <input type="button" class="numBtn" value="7">
+        <input type="button" class="numBtn" id="btn8" value="8">
+        <input type="button" class="numBtn" id="btn9" value="9">
+        <input type="button" class="numBtn" value="×"><br>
+        <input type="button" class="numBtn" id="btn4" value="4">
+        <input type="button" class="numBtn" id="btn5" value="5">
+        <input type="button" class="numBtn" id="btn6" value="6">
+        <input type="button" class="numBtn" value="-"><br>
+        <input type="button" class="numBtn" id="btn1" value="1">
+        <input type="button" class="numBtn" id="btn2" value="2">
+        <input type="button" class="numBtn" id="btn3" value="3">
+        <input type="button" class="numBtn" value="+"><br>
+        <input type="button" class="numBtn" value="±">
+        <input type="button" class="numBtn" id="btn0" value="0">
+        <input type="button" class="resultBtn" value="=">
+        <input type="button" class="numBtn" value="÷">
+    </div>
+</div>
+</body>
+</html>
